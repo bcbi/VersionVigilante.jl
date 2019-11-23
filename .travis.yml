@@ -33,5 +33,5 @@ jobs:
         - set -e
         - export JULIA_PROJECT=""
         - julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(url = "https://github.com/bcbi/VersionVigilante.jl"))'
-        - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/bcbi/VersionVigilante.jl")'
+        - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/bcbi/VersionVigilante.jl"; allow_unchanged_prerelease = false)'
       after_success: true
