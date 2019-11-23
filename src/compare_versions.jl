@@ -11,11 +11,11 @@ end
 
 function compare_versions(master_version::VersionNumber,
                           head_version::VersionNumber;
-                          allow_prerelease_versions::Bool)::Nothing
+                          allow_unchanged_prerelease::Bool)::Nothing
     if head_version > master_version
         @info("Version number has increased")
     elseif head_version == master_version
-        if isprerelease(head_version) && isprerelease(master_version) && allow_prerelease_versions
+        if isprerelease(head_version) && isprerelease(master_version) && allow_unchanged_prerelease
             @info("Version number did not change, but it is a prerelease so this is allowed")
         else
             throw(ErrorException("Version number is unchanged, which is not allowed"))
