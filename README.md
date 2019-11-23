@@ -23,7 +23,7 @@ jobs:
       julia: "1.2"
       script:
         - set -e
-        - julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(url = "https://github.com/bcbi/VersionVigilante.jl"))'
+        - julia -e 'using Pkg; Pkg.add("VersionVigilante")'
         - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")'
       after_success: true
 ```
