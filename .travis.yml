@@ -14,6 +14,11 @@ julia:
 
 language: julia
 
+notifications:
+  email:
+    on_success: never # default: change
+    on_failure: always # default: always
+
 os:
   - linux
 
@@ -24,9 +29,9 @@ after_success: julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov
 jobs:
   include:
     - stage: VersionVigilante
-      julia: "1.2"
+      julia: "1.3"
       script:
-        - set -ev
-        - julia --code-coverage --inline=no -e 'using Pkg; Pkg.add(Pkg.PackageSpec(url = "https://github.com/bcbi/VersionVigilante.jl"))'
-        - julia --code-coverage --inline=no -e 'using VersionVigilante; VersionVigilante.main("https://github.com/bcbi/VersionVigilante.jl")'
+        - set -e
+        - julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(url = "https://github.com/bcbi/VersionVigilante.jl"))'
+        - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/bcbi/VersionVigilante.jl")'
       after_success: true
