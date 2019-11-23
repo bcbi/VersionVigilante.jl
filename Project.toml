@@ -1,0 +1,13 @@
+name = "VersionVigilante"
+uuid = "227ca074-f042-4221-a2ff-40f0acdddd34"
+authors = ["Dilum Aluthge", "Brown Center for Biomedical Informatics"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
