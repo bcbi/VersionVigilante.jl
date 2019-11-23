@@ -1,7 +1,7 @@
 name = "VersionVigilante"
 uuid = "227ca074-f042-4221-a2ff-40f0acdddd34"
 authors = ["Dilum Aluthge", "Brown Center for Biomedical Informatics"]
-version = "0.1.0"
+version = "0.1.0-DEV"
 
 [compat]
 julia = "1"
