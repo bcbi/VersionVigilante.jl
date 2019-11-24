@@ -20,6 +20,7 @@ Add the following to your `.travis.yml` file:
 jobs:
   include:
     - stage: VersionVigilante
+      if: type = pull_request OR branch != master
       julia: "1.2"
       script:
         - set -e
