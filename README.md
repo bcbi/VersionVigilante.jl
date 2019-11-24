@@ -23,7 +23,7 @@ name: VersionVigilante.jl
 on: pull_request
 
 jobs:
-  version-vigilante:
+  VersionVigilante:
     runs-on: ubuntu-latest
 
     steps:
