@@ -23,4 +23,3 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.addLabels({...context.issue, labels: ['needs version bump']})
-```
