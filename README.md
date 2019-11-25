@@ -18,7 +18,7 @@ VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
 Add the following workflow to your repo:
 
 ```yaml
-name: VersionVigilante.jl
+name: VersionVigilante
 
 on: pull_request
 
