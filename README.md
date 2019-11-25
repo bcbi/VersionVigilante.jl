@@ -15,7 +15,8 @@ VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
 
 ## Using on GitHub Actions
 
-Add the following workflow to your repo in a workflow file named `.github/workflows/VersionVigilante.yml`.
+Add the following workflow to your repo in a workflow file
+named `.github/workflows/VersionVigilante.yml`.
 
 ```yaml
 name: VersionVigilante
@@ -25,16 +26,13 @@ on: pull_request
 jobs:
   VersionVigilante:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1.0.0
       - uses: julia-actions/setup-julia@latest
-
       - name: VersionVigilante.main
         run: |
           julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(url = "https://github.com/bcbi/VersionVigilante.jl"))'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
-
       # Apply 'needs version bump' label on failure
       - name: ❌ Labeller
         if: failure()
@@ -47,7 +45,8 @@ jobs:
 
 ## Using on Travis CI
 
-Add the following to your `.travis.yml` file. Make sure to replace `MYUSERNAME` and `MYPACKAGE` with the correct values.
+Add the following to your `.travis.yml` file.
+Make sure to replace `MYUSERNAME` and `MYPACKAGE` with the correct values.
 ```yaml
 jobs:
   include:
@@ -60,3 +59,8 @@ jobs:
         - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")'
       after_success: true
 ```
+
+## Using with Bors-NG
+
+If you use [Bors](https://github.com/bors-ng/bors-ng) on your repository,
+[click here](instructions_bors.md) for instructions.
