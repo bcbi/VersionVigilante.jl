@@ -15,7 +15,7 @@ VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
 
 ## Using on GitHub Actions
 
-Add the following workflow to your repo:
+Add the following workflow to your repo in a workflow file named `.github/workflows/VersionVigilante.yml`.
 
 ```yaml
 name: VersionVigilante
@@ -47,7 +47,7 @@ jobs:
 
 ## Using on Travis CI
 
-Add the following to your `.travis.yml` file:
+Add the following to your `.travis.yml` file. Make sure to replace `MYUSERNAME` and `MYPACKAGE` with the correct values.
 ```yaml
 jobs:
   include:
