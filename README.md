@@ -26,39 +26,25 @@ on: pull_request
 jobs:
   VersionVigilante:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v1.0.0
       - uses: julia-actions/setup-julia@latest
+
       - name: VersionVigilante.main
         run: |
           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
+
       # Apply 'needs version bump' label on failure
       - name: ❌ Labeller
         if: failure()
-        continue-on-error: false
+        continue-on-error: true
         uses: actions/github-script@0.3.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.addLabels({...context.issue, labels: ['needs version bump']})
-```
-
-## Using on Travis CI
-
-Add the following to your `.travis.yml` file.
-Make sure to replace `MYUSERNAME` and `MYPACKAGE` with the correct values.
-```yaml
-jobs:
-  include:
-    - stage: VersionVigilante
-      if: type = pull_request OR branch != master
-      julia: "1.2"
-      script:
-        - set -e
-        - julia -e 'using Pkg; Pkg.add("VersionVigilante")'
-        - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")'
-      after_success: true
 ```
 
 ## Using with Bors-NG
