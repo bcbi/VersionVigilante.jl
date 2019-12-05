@@ -13,11 +13,6 @@ A good description of the CD workflow for Julia packages is available here: http
 VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
 ```
 
-## Using with Bors-NG
-
-If you use [Bors](https://github.com/bors-ng/bors-ng) on your repository,
-[click here](instructions_bors.md) for instructions.
-
 ## Using on GitHub Actions
 
 Add the following workflow to your repo in a workflow file
@@ -67,3 +62,8 @@ jobs:
         - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")'
       after_success: true
 ```
+
+## Using with Bors-NG
+
+If you use [Bors](https://github.com/bors-ng/bors-ng) on your repository,
+[click here](instructions_bors.md) for instructions.
