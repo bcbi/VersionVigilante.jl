@@ -7,7 +7,7 @@ repository, [click here](README.md) for instructions.
 ## Step 1: Create GitHub Actions workflow
 
 Add the following workflow to your repo in a workflow file
-named `.github/workflows/VersionVigilante.yml`.
+named `.github/workflows/VersionVigilante_bors.yml`.
 
 ```yaml
 name: VersionVigilante
