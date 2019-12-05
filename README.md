@@ -10,14 +10,17 @@ A good description of the CD workflow for Julia packages is available here: http
 ## Basic usage
 
 ```julia
-VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
+VersionVigilante.main("https://github.com/MyUsername/MyPackage.jl")
+```
+
+```julia
+VersionVigilante.main("https://example.com/foo/bar/baz/MyPackage.jl")
 ```
 
 ## Using on GitHub Actions
 
 Add the following workflow to your repo in a workflow file
-named `.github/workflows/VersionVigilante.yml`.
-
+named `.github/workflows/VersionVigilante_pull_request.yml`:
 ```yaml
 name: VersionVigilante
 
@@ -45,7 +48,6 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.addLabels({...context.issue, labels: ['needs version bump']})
-
 ```
 
 ## Using on Travis CI
