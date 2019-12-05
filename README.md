@@ -45,6 +45,24 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.addLabels({...context.issue, labels: ['needs version bump']})
+
+```
+
+## Using on Travis CI
+
+Add the following to your `.travis.yml` file.
+Make sure to replace `MYUSERNAME` and `MYPACKAGE` with the correct values.
+```yaml
+jobs:
+  include:
+    - stage: VersionVigilante
+      if: type = pull_request OR branch != master
+      julia: "1.2"
+      script:
+        - set -e
+        - julia -e 'using Pkg; Pkg.add("VersionVigilante")'
+        - julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")'
+      after_success: true
 ```
 
 ## Using with Bors-NG
