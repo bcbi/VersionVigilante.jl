@@ -16,7 +16,7 @@ VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
 ## Using on GitHub Actions
 
 Add the following workflow to your repo in a workflow file
-named `.github/workflows/VersionVigilante.yml`.
+named `.github/workflows/VersionVigilante_pull_request.yml`.
 
 ```yaml
 name: VersionVigilante
