@@ -10,7 +10,11 @@ A good description of the CD workflow for Julia packages is available here: http
 ## Basic usage
 
 ```julia
-VersionVigilante.main("https://github.com/MYUSERNAME/MYPACKAGE.jl")
+VersionVigilante.main("https://github.com/MyUsername/MyPackage.jl")
+```
+
+```julia
+VersionVigilante.main("https://example.com/foo/bar/baz/MyPackage.jl")
 ```
 
 ## Using on GitHub Actions
