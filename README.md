@@ -36,6 +36,7 @@ jobs:
       # Apply 'needs version bump' label on failure
       - name: ❌ Labeller
         if: failure()
+        continue-on-error: false
         uses: actions/github-script@0.3.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
