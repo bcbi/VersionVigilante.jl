@@ -45,7 +45,7 @@ status = [
 ## Step 3 (optional): Create `VersionVigilante_pull_request.yml` workflow
 
 Add the following GitHub Actions workflow to your repo in a workflow file
-named `.github/workflows/VersionVigilante_bors.yml`:
+named `.github/workflows/VersionVigilante_pull_request.yml`:
 ```yaml
 name: VersionVigilante
 
