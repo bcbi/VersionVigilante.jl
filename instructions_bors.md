@@ -42,7 +42,7 @@ status = [
 ]
 ```
 
-## Step 3 (optional): Create `VersionVigilante_pull_request.yml` workflow
+## Step 3 (optional, but highly recommended): Create `VersionVigilante_pull_request.yml` workflow
 
 Add the following GitHub Actions workflow to your repo in a workflow file
 named `.github/workflows/VersionVigilante_pull_request.yml`:
