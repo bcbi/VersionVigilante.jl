@@ -4,7 +4,7 @@ function main(repo_url::AbstractString;
               build_directory::AbstractString = pwd(),
               master_branch::AbstractString = "master",
               allow_unchanged_prerelease::Bool = true,
-              set_output::Bool = true,
+              set_output::Bool = get(ENV, "GITHUB_ACTIONS", "") == "true",
               set_output_io::IO = stdout)::Nothing
     head_version = get_head_version(repo_url; build_directory = build_directory)  
     master_version = get_upstream_version(repo_url; master_branch = master_branch)
