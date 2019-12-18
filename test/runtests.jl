@@ -191,5 +191,7 @@ const repo_url = "https://github.com/bcbi-test/versionvigilante-integration-test
         end
     end
     @testset "utils.jl" begin
+        # setting outputs for GitHub Actions
+        @test sprint(VersionVigilante.set_actions_output, "master_version", "v1.2.0") == "::set-output name=master_version::v1.2.0\n"
     end
 end

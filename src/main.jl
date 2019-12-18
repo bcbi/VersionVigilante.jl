@@ -11,8 +11,10 @@ function main(repo_url::AbstractString;
     @info("Master version: $(master_version)")
     @info("Head version: $(head_version)")
     if set_output
-        println(set_output_io, "::set-output name=master_version::v$(master_version)")
-        println(set_output_io, "::set-output name=pr_version::v$(head_version)")
+        set_actions_output(set_output_io, "master_version", "v$master_version")
+        set_actions_output(set_output_io, "head_version", "v$head_version")
+        # println(set_output_io, "::set-output name=master_version::v$(master_version)")
+        # println(set_output_io, "::set-output name=pr_version::v$(head_version)")
     end 
     compare_versions(master_version,
                      head_version;
