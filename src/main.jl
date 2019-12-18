@@ -18,6 +18,8 @@ function main(repo_url::AbstractString;
     end 
     compare_versions(master_version,
                      head_version;
-                     allow_unchanged_prerelease = allow_unchanged_prerelease)
+                     allow_unchanged_prerelease = allow_unchanged_prerelease,
+                     set_output = set_output,
+                     set_output_io = set_output_io)
     return nothing
 end
