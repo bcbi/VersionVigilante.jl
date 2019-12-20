@@ -2,7 +2,7 @@ name: VersionVigilante
 
 on:
   push:
-    branches:    
+    branches:
       - staging
       - trying
 
