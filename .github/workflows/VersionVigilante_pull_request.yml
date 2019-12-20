@@ -16,16 +16,16 @@ jobs:
         run: |
           julia -e 'using Pkg; pkg"add VersionVigilante#da/remove-label"'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
-      - name: ✅ Un-Labeller
-        if: (success() || failure()) && (steps.versionvigilante_main.outputs.compare_versions == 'success')
+      - name: ✅ Un-Labeller (if success)
+        if: (steps.versionvigilante_main.outputs.compare_versions == 'success') && (success() || failure())
         continue-on-error: true
         uses: actions/github-script@0.3.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             github.issues.removeLabel({...context.issue, name: 'needs version bump'})
-      - name: ❌ Labeller
-        if: (success() || failure()) && (steps.versionvigilante_main.outputs.compare_versions == 'failure')
+      - name: ❌ Labeller (if failure)
+        if: (steps.versionvigilante_main.outputs.compare_versions == 'failure') && (success() || failure())
         continue-on-error: true
         uses: actions/github-script@0.3.0
         with:
