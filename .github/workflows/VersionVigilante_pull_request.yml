@@ -14,7 +14,7 @@ jobs:
           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
       - name: ✅ Labeller
-        if: (success() || failure()) && (steps.versionvigilante_main.outputs.success_failure == 'success')
+        if: (success() || failure()) && (steps.versionvigilante_main.outputs.good_or_bad == 'good')
         continue-on-error: true
         uses: actions/github-script@0.3.0
         with:
@@ -22,7 +22,7 @@ jobs:
           script: |
             github.issues.removeLabel({...context.issue, 'needs version bump'})
       - name: ❌ Labeller
-        if: (success() || failure()) && (steps.versionvigilante_main.outputs.success_failure == 'failure')
+        if: (success() || failure()) && (steps.versionvigilante_main.outputs.good_or_bad == 'bad')
         continue-on-error: true
         uses: actions/github-script@0.3.0
         with:
