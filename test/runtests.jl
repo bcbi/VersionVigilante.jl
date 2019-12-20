@@ -166,6 +166,20 @@ const repo_url = "https://github.com/bcbi-test/versionvigilante-integration-test
             @test nothing == VersionVigilante.main(repo_url;
                                                    master_branch = "master-1.0.0-dev")
         end
+        
+        # print output to stdout for GitHub Actions
+        VersionVigilante.with_branch(repo_url,
+                                     "master-1.0.0-dev",
+                                     "feature-1.0.0") do
+            rm("Project.toml"; force = true, recursive = true)
+            open("Project.toml", "w") do io
+                println(io, "version = \"1.0.0\"")
+            end
+            withenv("GITHUB_ACTIONS" => "true") do
+                @test nothing == VersionVigilante.main(repo_url;
+                                                       master_branch = "master-1.0.0-dev")
+            end
+        end
     end
     @testset "parse_project.jl" begin
         VersionVigilante.with_temp_dir() do
@@ -177,5 +191,7 @@ const repo_url = "https://github.com/bcbi-test/versionvigilante-integration-test
         end
     end
     @testset "utils.jl" begin
+        # setting outputs for GitHub Actions
+        @test sprint(VersionVigilante.set_actions_output, "master_version", "v1.2.0") == "::set-output name=master_version::v1.2.0\n"
     end
 end

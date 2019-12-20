@@ -34,3 +34,8 @@ function with_branch(f::Function,
     cd(original_directory)
     return result
 end
+
+function set_actions_output(io::IO, key::String, val::String)::Nothing
+    println(io, "::set-output name=$key::$val")
+    return nothing
+end
