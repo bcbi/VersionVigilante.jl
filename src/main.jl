@@ -8,6 +8,9 @@ function main(repo_url::AbstractString;
               gh_set_output_io::IO = stdout)::Nothing
     head_version = get_head_version(repo_url; build_directory = build_directory)
     master_version = get_upstream_version(repo_url; master_branch = master_branch)
+    @info("", ENV["GITHUB_ACTIONS"])
+    @info("", gh_set_output)
+    @info("", gh_set_output_io)
     @info("Master version: $(master_version)")
     @info("Head version: $(head_version)")
     _gh_set_output_println(gh_set_output, gh_set_output_io, "master_version", "v$(master_version)")
