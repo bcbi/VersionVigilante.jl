@@ -10,6 +10,7 @@ jobs:
       - uses: julia-actions/setup-julia@latest
       - name: VersionVigilante.main
         id: versionvigilante_main
+#         TODO: Restore these lines
 #         run: |
 #           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
 #           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
