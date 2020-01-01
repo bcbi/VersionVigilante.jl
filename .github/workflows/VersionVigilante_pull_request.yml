@@ -16,7 +16,7 @@ jobs:
 #           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
         run: |
           julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(name = "VersionVigilante", rev = "master"))'
-          julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
+          julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}"; allow_skipping_versions = false)'
       - name: ✅ Un-Labeller (if success)
         if: (steps.versionvigilante_main.outputs.compare_versions == 'success') && (success() || failure())
         continue-on-error: true
