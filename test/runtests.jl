@@ -6,6 +6,10 @@ using Test
 const repo_url = "https://github.com/bcbi-test/versionvigilante-integration-test-repo.git"
 
 @testset "VersionVigilante.jl" begin
+    @testset "assert.jl" begin
+        @test nothing == VersionVigilante.always_assert(true, "")
+        @test_throws VersionVigilante.AlwaysAssertionError VersionVigilante.always_assert(false, "")
+    end
     @testset "compare_versions.jl" begin
         @testset "isprerelease" begin
             @test !VersionVigilante.isprerelease(v"1")
