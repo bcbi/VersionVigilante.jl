@@ -4,6 +4,7 @@ function main(repo_url::AbstractString;
               build_directory::AbstractString = pwd(),
               master_branch::AbstractString = "master",
               allow_unchanged_prerelease::Bool = true,
+              allow_skipping_versions::Bool = false,
               gh_set_output::Bool = get(ENV, "GITHUB_ACTIONS", "") == "true",
               gh_set_output_io::IO = stdout)::Nothing
     head_version = get_head_version(repo_url; build_directory = build_directory)
@@ -15,6 +16,7 @@ function main(repo_url::AbstractString;
     compare_versions(master_version,
                      head_version;
                      allow_unchanged_prerelease = allow_unchanged_prerelease,
+                     allow_skipping_versions = allow_skipping_versions,
                      gh_set_output = gh_set_output,
                      gh_set_output_io = gh_set_output_io)
     return nothing

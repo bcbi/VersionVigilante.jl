@@ -7,10 +7,16 @@ const repo_url = "https://github.com/bcbi-test/versionvigilante-integration-test
 
 @testset "VersionVigilante.jl" begin
     @testset "compare_versions.jl" begin
-        @test !VersionVigilante.isprerelease(v"1")
-        @test !VersionVigilante.isprerelease(v"1-")
-        @test VersionVigilante.isprerelease(v"1-dev")
-        @test VersionVigilante.isprerelease(v"1-PRE")
+        @testset "isprerelease" begin
+            @test !VersionVigilante.isprerelease(v"1")
+            @test !VersionVigilante.isprerelease(v"1-")
+            @test VersionVigilante.isprerelease(v"1-dev")
+            @test VersionVigilante.isprerelease(v"1-PRE")
+        end
+        @testset "_calculate_increment" begin
+            include("test_calculate_increment.jl")
+        end
+
     end
     @testset "main.jl" begin
         # 1.0.0 -> 0.9.9 is FAIL
