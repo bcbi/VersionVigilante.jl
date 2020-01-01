@@ -54,7 +54,7 @@ function check_version_increment(master_version::VersionNumber,
     _gh_set_output_println(gh_set_output, gh_set_output_io, "compare_versions", "success")
     @info("Version number has increased")
     increment = _calculate_increment(master_version, head_version)
-    if increment in [v"0.0.0", v"0.0.1", v"0.1.0", v"1.0.0"]
+    if increment in (v"0.0.0", v"0.0.1", v"0.1.0", v"1.0.0")
         @info("Increment is good",
               master_version,
               head_version,
