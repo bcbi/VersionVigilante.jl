@@ -10,12 +10,8 @@ jobs:
       - uses: julia-actions/setup-julia@latest
       - name: VersionVigilante.main
         id: versionvigilante_main
-#         TODO: Restore these lines
-#         run: |
-#           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
-#           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
         run: |
-          julia -e 'using Pkg; Pkg.add(Pkg.PackageSpec(name = "VersionVigilante", rev = "master"))'
+          julia -e 'using Pkg; Pkg.add("VersionVigilante")'
           julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
       - name: ✅ Un-Labeller (if success)
         if: (steps.versionvigilante_main.outputs.compare_versions == 'success') && (success() || failure())
