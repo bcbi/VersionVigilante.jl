@@ -34,9 +34,11 @@ jobs:
       - uses: julia-actions/setup-julia@latest
       - name: VersionVigilante.main
         id: versionvigilante_main
+        env:
+         github-token: ${{secrets.GITHUB_TOKEN}}
         run: |
           julia -e 'using Pkg; Pkg.add("VersionVigilante")'
-          julia -e 'using VersionVigilante; VersionVigilante.main("https://github.com/${{ github.repository }}")'
+          julia -e 'using VersionVigilante; VersionVigilante.main("https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}")'
       - name: ✅ Un-Labeller (if success)
         if: (steps.versionvigilante_main.outputs.compare_versions == 'success') && (success() || failure())
         continue-on-error: true
