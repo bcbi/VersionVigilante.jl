@@ -1,7 +1,7 @@
 name = "VersionVigilante"
 uuid = "227ca074-f042-4221-a2ff-40f0acdddd34"
 authors = ["Dilum Aluthge", "Brown Center for Biomedical Informatics"]
-version = "0.4.4"
+version = "0.4.5"
 
 [deps]
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
